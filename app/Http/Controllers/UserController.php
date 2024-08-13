@@ -30,7 +30,7 @@ class UserController extends Controller
         UserModel::where('username', 'dika')->delete();
 
         //akses model ke UserModel
-        $user = UserModel::all();
+        $user = UserModel::with('level')->get();
         return view('user', ['data' => $user]);
     }
 }
