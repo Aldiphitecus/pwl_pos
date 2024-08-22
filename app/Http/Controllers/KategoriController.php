@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
-    public function index() 
+    public function index()
     {
         // $data = [
         //     'kategori_kode' => 'SNK',
@@ -23,7 +23,14 @@ class KategoriController extends Controller
         // $data = DB::table('m_kategori')->where('kategori_kode', 'SNK')->delete();
         // return 'delete data berhasil, jumlah data yang terhapus ' . $data . 'baris';
 
+        $breadcrumb = (object) [
+            'title' => 'Data Kategori',
+            'list' => ['Data Barang', 'Kategori Barang']
+        ];
+
+        $activeMenu = 'kategori';
+
         $data = DB::table('m_kategori')->get();
-        return view('kategori', ['data' => $data]);
+        return view('kategori', ['activeMenu' => $activeMenu, 'breadcrumb' => $breadcrumb, 'data' => $data]);
     }
 }

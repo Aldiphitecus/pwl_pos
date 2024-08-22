@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DB Facade</title>
-</head>
-<body>
+@extends('layouts.template')
+
+@section('content')
     <h1>Data Level Pengguna</h1>
-    <table border="1" cellpadding="2" cellspacing="0">
-        <tr>
+    <table class="table table-bordered m-1">
+        <tr class="text-center">
             <th>Id</th>
             <th>Kode Level</th>
             <th>Nama Level</th>
@@ -22,5 +16,4 @@
             </tr>
         @endforeach
     </table>
-</body>
-</html>
+@endsection

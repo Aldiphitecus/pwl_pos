@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LevelModel;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,14 @@ class LevelController extends Controller
         // return 'hapus data berhasil, jumlah data yang dihapus ' . $row . 'baris';
 
         //menampilkan data
-        $data = DB::select('select * from m_level');
-        return view('level', ['data' => $data]);
+        $breadcrumb = (object) [
+            'title' => 'Selamat Datang',
+            'list' => ['Data Pengguna', 'Level User']
+        ];
+
+        $activeMenu = 'level';
+
+        $data = LevelModel::all();
+        return view('level', ['activeMenu' => $activeMenu, 'breadcrumb' => $breadcrumb, 'data' => $data]);
     }
 }

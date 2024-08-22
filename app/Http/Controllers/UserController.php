@@ -30,7 +30,15 @@ class UserController extends Controller
         UserModel::where('username', 'dika')->delete();
 
         //akses model ke UserModel
+
+        $breadcrumb = (object) [
+            'title' => 'Data User',
+            'list' => ['Data Pengguna', 'Data User']
+        ];
+
+        $activeMenu = 'user';
+
         $user = UserModel::with('level')->get();
-        return view('user', ['data' => $user]);
+        return view('user', ['activeMenu' => $activeMenu, 'breadcrumb' => $breadcrumb, 'data' => $user]);
     }
 }
